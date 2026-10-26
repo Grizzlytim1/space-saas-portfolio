@@ -1,0 +1,16 @@
+<div class="modal" data-modal hidden>
+  <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="m-title" tabindex="-1">
+    <button class="modal__x" type="button" data-close aria-label="Закрити">✕</button>
+    <p class="pill"><i></i>14 днів безкоштовно</p>
+    <h2 class="h3" id="m-title">Почнімо роботу з Space</h2>
+    <form class="form" data-form novalidate>
+      <label>Ім'я<input name="name" autocomplete="name" placeholder="Олена"></label>
+      <label>Робочий email<input name="email" type="email" autocomplete="email" placeholder="olena@company.ua"></label>
+      <label>Розмір команди<select name="size"><option value="">Оберіть…</option><option>Лише я</option><option>2–10 людей</option><option>11–50 людей</option><option>50+ людей</option></select></label>
+      <label>Що хочете автоматизувати?<textarea name="msg" rows="3" placeholder="Наприклад: рахунки клієнтам і податки ФОП"></textarea></label>
+      <p class="form__err" data-err role="alert"></p>
+      <button class="btn btn--lime btn--wide" type="submit">→ Отримати доступ</button>
+    </form>
+    <div class="done" data-done hidden><span class="done__ok">✓</span><h3 class="h3">Заявку прийнято!</h3><p data-done-text></p><button class="btn btn--white" type="button" data-close>Чудово</button></div>
+  </div>
+</div>

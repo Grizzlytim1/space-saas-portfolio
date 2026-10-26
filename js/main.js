@@ -1,4 +1,4 @@
-/* Обрій — page behaviour */
+/* Space — behaviour shared by all pages (each block runs only if its markup exists) */
 (() => {
   "use strict";
   const $ = (s, r = document) => r.querySelector(s);
@@ -9,38 +9,38 @@
   const toastEl = $("[data-toast]");
   let tt;
   const toast = (t) => { toastEl.textContent = t; toastEl.classList.add("is-on"); clearTimeout(tt); tt = setTimeout(() => toastEl.classList.remove("is-on"), 2600); };
-  $$("[data-soon]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); toast("Ця сторінка ще в розробці — Обрій поки концепт для портфоліо."); }));
+  $$("[data-soon]").forEach((a) => a.addEventListener("click", (e) => { e.preventDefault(); toast("Ця сторінка ще в розробці — Space поки концепт для портфоліо."); }));
 
   /* ---------- starfield ---------- */
-  const cv = $("[data-stars]"), cx = cv.getContext("2d");
-  let stars = [], sw = 0, sh = 0, dpr = 1, raf;
-  function sizeStars() {
-    dpr = Math.min(2, devicePixelRatio || 1);
-    sw = cv.offsetWidth; sh = cv.offsetHeight;
-    cv.width = sw * dpr; cv.height = sh * dpr;
-    const n = Math.round(sw * sh / 5200);
-    stars = Array.from({ length: n }, () => ({ x: Math.random() * sw, y: Math.random() * sh, r: Math.random() * 1.1 + 0.2, p: Math.random() * 6.28, s: 0.4 + Math.random() * 1.4, v: 0.02 + Math.random() * 0.08 }));
-    drawStars(0);
+  const cv = $("[data-stars]");
+  if (cv) {
+    const cx = cv.getContext("2d");
+    let stars = [], sw = 0, sh = 0, dpr = 1, raf;
+    const drawStars = (t) => {
+      cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      cx.clearRect(0, 0, sw, sh);
+      for (const s of stars) {
+        if (!reduce) { s.y -= s.v; if (s.y < -2) s.y = sh + 2; }
+        cx.globalAlpha = 0.25 + 0.75 * Math.abs(Math.sin(s.p + t / 1000 * s.s));
+        cx.fillStyle = s.r > 1.1 ? "#e9ffb0" : "#fff";
+        cx.beginPath(); cx.arc(s.x, s.y, s.r, 0, 6.283); cx.fill();
+      }
+    };
+    const sizeStars = () => {
+      dpr = Math.min(2, devicePixelRatio || 1);
+      sw = cv.offsetWidth; sh = cv.offsetHeight;
+      cv.width = sw * dpr; cv.height = sh * dpr;
+      stars = Array.from({ length: Math.round(sw * sh / 5200) }, () => ({ x: Math.random() * sw, y: Math.random() * sh, r: Math.random() * 1.1 + 0.2, p: Math.random() * 6.28, s: 0.4 + Math.random() * 1.4, v: 0.02 + Math.random() * 0.08 }));
+      drawStars(0);
+    };
+    const loop = (t) => { drawStars(t); raf = requestAnimationFrame(loop); };
+    sizeStars();
+    if (!reduce) new IntersectionObserver(([en]) => { cancelAnimationFrame(raf); if (en.isIntersecting) raf = requestAnimationFrame(loop); }).observe(cv);
+    addEventListener("resize", sizeStars);
   }
-  function drawStars(t) {
-    cx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    cx.clearRect(0, 0, sw, sh);
-    for (const s of stars) {
-      const a = 0.25 + 0.75 * Math.abs(Math.sin(s.p + t / 1000 * s.s));
-      if (!reduce) { s.y -= s.v; if (s.y < -2) s.y = sh + 2; }
-      cx.globalAlpha = a; cx.fillStyle = s.r > 1.1 ? "#e9ffb0" : "#fff";
-      cx.beginPath(); cx.arc(s.x, s.y, s.r, 0, 6.283); cx.fill();
-    }
-  }
-  const loop = (t) => { drawStars(t); raf = requestAnimationFrame(loop); };
-  sizeStars();
-  if (!reduce) {
-    new IntersectionObserver(([en]) => { cancelAnimationFrame(raf); if (en.isIntersecting) raf = requestAnimationFrame(loop); }).observe(cv);
-  }
-  addEventListener("resize", sizeStars);
 
-  /* ---------- nav: solid after scroll, hides while scrolling down ---------- */
-  const nav = $("[data-nav]");
+  /* ---------- nav: solid after scroll, hides while scrolling down; burger on phones ---------- */
+  const nav = $("[data-nav]"), burger = $("[data-burger]"), mnav = $("#mnav");
   let lastY = scrollY;
   const onScroll = () => {
     const y = scrollY;
@@ -49,12 +49,10 @@
     lastY = y;
   };
   addEventListener("scroll", onScroll, { passive: true });
-
-  /* ---------- mobile nav ---------- */
-  const burger = $("[data-burger]"), mnav = $("#mnav");
   const setM = (open) => { mnav.hidden = !open; burger.setAttribute("aria-expanded", String(open)); burger.setAttribute("aria-label", open ? "Закрити меню" : "Відкрити меню"); };
   burger.addEventListener("click", () => setM(mnav.hidden));
-  $$("#mnav a, #mnav button").forEach((a) => a.addEventListener("click", () => setM(false)));
+  $$("#mnav a").forEach((a) => a.addEventListener("click", () => setM(false)));
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !mnav.hidden) { setM(false); burger.focus(); } });
   matchMedia("(min-width: 861px)").addEventListener("change", (e) => e.matches && setM(false));
   onScroll();
 
@@ -77,10 +75,9 @@
   });
 
   /* ---------- logo marquee (content duplicated once) ---------- */
-  const logos = $("[data-logos]");
-  logos.insertAdjacentHTML("beforeend", logos.innerHTML.replace(/<span class="lg/g, '<span aria-hidden="true" class="lg'));
+  $$("[data-logos]").forEach((l) => l.insertAdjacentHTML("beforeend", l.innerHTML.replace(/<span class="lg/g, '<span aria-hidden="true" class="lg')));
 
-  /* ---------- fixed-size editor mock scaled to its column ---------- */
+  /* ---------- fixed-size mock scaled to its column ---------- */
   $$("[data-scaler]").forEach((box) => {
     const w = +box.dataset.w, h = +box.dataset.h;
     const fit = () => { const s = box.clientWidth / w; box.style.setProperty("--s", s); box.style.height = h * s + "px"; };
@@ -105,22 +102,24 @@
 
   /* ---------- testimonial slider ---------- */
   const slider = $("[data-slider]");
-  const pics = $$(".slider__photos img", slider), quotes = $$(".rv", slider);
-  let cur = 0, auto;
-  const go = (n) => {
-    cur = (n + quotes.length) % quotes.length;
-    pics.forEach((p, i) => p.classList.toggle("is-on", i === cur));
-    quotes.forEach((q, i) => { q.classList.toggle("is-on", i === cur); q.setAttribute("aria-hidden", String(i !== cur)); });
-  };
-  const restart = () => { clearInterval(auto); if (!reduce) auto = setInterval(() => go(cur + 1), 7000); };
-  $("[data-prev]", slider).addEventListener("click", () => { go(cur - 1); restart(); });
-  $("[data-next]", slider).addEventListener("click", () => { go(cur + 1); restart(); });
-  let sx = null;
-  slider.addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
-  slider.addEventListener("touchend", (e) => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1)); restart(); } sx = null; });
-  slider.addEventListener("mouseenter", () => clearInterval(auto));
-  slider.addEventListener("mouseleave", restart);
-  go(0); restart();
+  if (slider) {
+    const pics = $$(".slider__photos img", slider), quotes = $$(".rv", slider);
+    let cur = 0, auto;
+    const go = (n) => {
+      cur = (n + quotes.length) % quotes.length;
+      pics.forEach((p, i) => p.classList.toggle("is-on", i === cur));
+      quotes.forEach((q, i) => { q.classList.toggle("is-on", i === cur); q.setAttribute("aria-hidden", String(i !== cur)); });
+    };
+    const restart = () => { clearInterval(auto); if (!reduce) auto = setInterval(() => go(cur + 1), 7000); };
+    $("[data-prev]", slider).addEventListener("click", () => { go(cur - 1); restart(); });
+    $("[data-next]", slider).addEventListener("click", () => { go(cur + 1); restart(); });
+    let sx = null;
+    slider.addEventListener("touchstart", (e) => { sx = e.touches[0].clientX; }, { passive: true });
+    slider.addEventListener("touchend", (e) => { if (sx === null) return; const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) { go(cur + (dx < 0 ? 1 : -1)); restart(); } sx = null; });
+    slider.addEventListener("mouseenter", () => clearInterval(auto));
+    slider.addEventListener("mouseleave", restart);
+    go(0); restart();
+  }
 
   /* ---------- FAQ accordion (one open at a time) ---------- */
   const qas = $$("[data-faq] .qa");
@@ -133,10 +132,58 @@
     });
   });
 
-  /* ---------- contact modal ---------- */
-  const modal = $("[data-modal]"), box = $(".modal__box", modal), form = $("[data-form]", modal), done = $("[data-done]", modal), err = $("[data-err]", modal);
-  let opener = null;
-  const openM = (from) => { opener = from; modal.hidden = false; document.documentElement.classList.add("no-scroll"); form.hidden = false; done.hidden = true; setTimeout(() => form.elements.namedItem("name").focus(), 50); };
+  /* ---------- about: history timeline ---------- */
+  const tl = $("[data-timeline]");
+  if (tl) {
+    const yb = $$("[data-year]", tl), yc = $$("[data-ycard]", tl), bar = $("[data-tl-bar]", tl);
+    const pick = (i, focus) => {
+      yb.forEach((b, k) => { b.setAttribute("aria-selected", String(k === i)); b.tabIndex = k === i ? 0 : -1; b.classList.toggle("is-past", k <= i); });
+      yc.forEach((c, k) => c.classList.toggle("is-on", k === i));
+      bar.style.transform = `scaleX(${yb.length > 1 ? i / (yb.length - 1) : 1})`;
+      if (focus) yb[i].focus();
+    };
+    yb.forEach((b, i) => {
+      b.addEventListener("click", () => pick(i));
+      b.addEventListener("keydown", (e) => { const k = { ArrowRight: 1, ArrowLeft: -1 }[e.key]; if (k) { e.preventDefault(); pick(Math.max(0, Math.min(yb.length - 1, i + k)), true); } });
+    });
+    pick(yb.length - 1);
+  }
+
+  /* ---------- pricing: monthly / yearly toggle (no prices, only billing note) ---------- */
+  const bill = $("[data-bill-toggle]");
+  if (bill) {
+    const btns = $$("[data-period]", bill);
+    const setP = (p) => {
+      btns.forEach((b) => b.setAttribute("aria-checked", String(b.dataset.period === p)));
+      $$("[data-bill]").forEach((s) => { s.textContent = p === "year" ? "Річна оплата · знижка 20% до будь-якої пропозиції" : "Щомісячна оплата · підберемо під ваш обсяг"; });
+      document.body.dataset.billing = p;
+    };
+    btns.forEach((b) => b.addEventListener("click", () => setP(b.dataset.period)));
+    bill.addEventListener("keydown", (e) => { if (["ArrowLeft", "ArrowRight"].includes(e.key)) { e.preventDefault(); const n = btns.find((b) => b.getAttribute("aria-checked") === "false"); setP(n.dataset.period); n.focus(); } });
+    setP("month");
+  }
+
+  /* ---------- form validation (modal + contact page) ---------- */
+  const emailOk = (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim());
+  function validate(form, rules) {
+    const f = (n) => form.elements.namedItem(n), err = $("[data-err]", form);
+    const msgs = []; let first = null;
+    rules.forEach(([n, ok, m]) => { const el = f(n); if (!el) return; const bad = !ok(el.value); el.setAttribute("aria-invalid", String(bad)); if (bad) { msgs.push(m); first = first || el; } });
+    err.textContent = msgs.join(" ");
+    if (first) first.focus();
+    return !first;
+  }
+
+  /* contact modal (opened by every "Почати / Дізнатися ціну" button) */
+  const modal = $("[data-modal]");
+  const box = $(".modal__box", modal), mform = $("[data-form]", modal), mdone = $("[data-done]", modal), mtitle = $("#m-title", modal);
+  let opener = null, plan = "";
+  const openM = (from) => {
+    opener = from; plan = from.dataset.plan || "";
+    mtitle.textContent = plan ? `Тариф «${plan}»: дізнайтеся ціну` : "Почнімо роботу зі Space";
+    modal.hidden = false; document.documentElement.classList.add("no-scroll"); mform.hidden = false; mdone.hidden = true;
+    setTimeout(() => mform.elements.namedItem("name").focus(), 50);
+  };
   const closeM = () => { modal.hidden = true; document.documentElement.classList.remove("no-scroll"); if (opener) opener.focus({ preventScroll: true }); };
   $$("[data-contact]").forEach((b) => b.addEventListener("click", () => openM(b)));
   $$("[data-close]", modal).forEach((b) => b.addEventListener("click", closeM));
@@ -150,15 +197,35 @@
       else if (!e.shiftKey && document.activeElement === f[f.length - 1]) { e.preventDefault(); f[0].focus(); }
     }
   });
-  form.addEventListener("submit", (e) => {
+  mform.addEventListener("submit", (e) => {
     e.preventDefault();
-    const f = (n) => form.elements.namedItem(n);
-    const rules = [["name", (v) => v.trim().length >= 2, "Вкажіть ім'я."], ["email", (v) => /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()), "Перевірте email."], ["size", (v) => !!v, "Оберіть розмір команди."]];
-    const msgs = []; let first = null;
-    rules.forEach(([n, ok, m]) => { const bad = !ok(f(n).value); f(n).setAttribute("aria-invalid", String(bad)); if (bad) { msgs.push(m); first = first || f(n); } });
-    err.textContent = msgs.join(" ");
-    if (first) { first.focus(); return; }
-    $("[data-done-text]", modal).textContent = `${f("name").value.trim()}, доступ на 14 днів надіслали на ${f("email").value.trim()}. Менеджер зв'яжеться, щоб допомогти з налаштуванням. (Це демо для портфоліо — листи не надсилаються.)`;
-    form.reset(); form.hidden = true; done.hidden = false; $("button", done).focus();
+    const ok = validate(mform, [["name", (v) => v.trim().length >= 2, "Вкажіть ім'я."], ["email", emailOk, "Перевірте email."], ["size", (v) => !!v, "Оберіть розмір команди."]]);
+    if (!ok) return;
+    const f = (n) => mform.elements.namedItem(n).value.trim();
+    $("[data-done-text]", modal).textContent = plan
+      ? `${f("name")}, персональну пропозицію за тарифом «${plan}» надішлемо на ${f("email")} протягом робочого дня. (Це демо для портфоліо — листи не надсилаються.)`
+      : `${f("name")}, доступ на 14 днів надіслали на ${f("email")}. Менеджер зв'яжеться, щоб допомогти з налаштуванням. (Це демо для портфоліо — листи не надсилаються.)`;
+    mform.reset(); mform.hidden = true; mdone.hidden = false; $("button", mdone).focus();
   });
+
+  /* contact page form */
+  const pform = $('[data-form="page"]');
+  if (pform) {
+    const wrap = pform.parentElement, pdone = $("[data-done]", wrap);
+    pform.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const ok = validate(pform, [
+        ["name", (v) => v.trim().length >= 2, "Вкажіть ім'я."],
+        ["phone", (v) => { const p = v.replace(/[\s()-]/g, ""); return !p || /^\+?380\d{9}$/.test(p) || /^0\d{9}$/.test(p); }, "Телефон у форматі +380 XX XXX XX XX (або залиште порожнім)."],
+        ["email", emailOk, "Перевірте email."],
+        ["size", (v) => !!v, "Оберіть тему."],
+        ["msg", (v) => v.trim().length >= 10, "Напишіть хоча б кілька слів."],
+      ]);
+      if (!ok) return;
+      const f = (n) => pform.elements.namedItem(n).value.trim();
+      $("[data-done-text]", wrap).textContent = `${f("name")}, дякуємо! Відповімо на ${f("email")} протягом години в робочий час. (Це демо для портфоліо — повідомлення нікуди не надсилається.)`;
+      pform.reset(); pform.hidden = true; pdone.hidden = false; $("[data-reset]", wrap).focus();
+    });
+    $("[data-reset]", wrap).addEventListener("click", () => { pdone.hidden = true; pform.hidden = false; pform.elements.namedItem("name").focus(); });
+  }
 })();

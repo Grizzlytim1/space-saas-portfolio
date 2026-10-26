@@ -1,4 +1,4 @@
-"""Playwright checks for the Обрій features page.  Run:  python tests/test_site.py"""
+"""Playwright checks for the Space site (5 pages).  Run:  python tests/test_site.py"""
 import os
 import subprocess
 import sys
@@ -33,7 +33,7 @@ def run():
                 errors = []
                 page.on("pageerror", lambda e: errors.append(str(e)))
                 page.on("console", lambda m: m.type == "error" and errors.append(m.text))
-                page.goto(URL, wait_until="networkidle")
+                page.goto(URL + "features.html", wait_until="networkidle")
                 page.add_style_tag(content="html{scroll-behavior:auto!important}")
                 page.evaluate("async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { scrollTo(0, y); await new Promise(r => setTimeout(r, 40)); } scrollTo(0, 0); }")
                 page.wait_for_timeout(500)
@@ -42,7 +42,7 @@ def run():
                 check(f"{w}: no horizontal overflow", sw <= w, f"scrollWidth {sw}")
                 broken = page.evaluate("[...document.images].filter(i => !i.complete || !i.naturalWidth).map(i => i.src)")
                 check(f"{w}: images load", not broken, ", ".join(broken))
-                check(f"{w}: Inter loaded (Cyrillic)", page.evaluate("document.fonts.check('600 40px Inter', 'Обрій')"))
+                check(f"{w}: Inter loaded (Cyrillic)", page.evaluate("document.fonts.check('600 40px Inter', 'Простір')"))
                 missing = page.evaluate("[...document.querySelectorAll('a[href^=\"#\"]')].map(a => a.getAttribute('href')).filter(h => h.length > 1 && !document.querySelector(h))")
                 check(f"{w}: anchors have targets", not missing, ", ".join(missing))
                 check(f"{w}: stars canvas drawn", page.evaluate("(() => { const c = document.querySelector('[data-stars]'); const d = c.getContext('2d').getImageData(0, 0, c.width, c.height).data; let n = 0; for (let i = 3; i < d.length; i += 64) if (d[i]) n++; return n > 20; })()"))
@@ -59,9 +59,9 @@ def run():
                 else:
                     page.click("[data-burger]")
                     check(f"{w}: burger opens mobile nav", page.is_visible("#mnav") and page.get_attribute("[data-burger]", "aria-expanded") == "true")
-                    page.click("#mnav a[href='#faq']")
-                    page.wait_for_timeout(300)
-                    check(f"{w}: mobile nav link closes menu", page.is_hidden("#mnav"))
+                    check(f"{w}: mobile nav lists 5 pages", page.locator("#mnav a[href$='.html']").count() == 6)
+                    page.click("[data-burger]")
+                    check(f"{w}: burger closes menu", page.is_hidden("#mnav"))
 
                 # counters
                 page.locator(".stat").first.scroll_into_view_if_needed()
@@ -120,10 +120,69 @@ def run():
                 page.screenshot(path=str(SHOTS / f"modal-{w}.png"))
                 page.keyboard.press("Escape")
                 check(f"{w}: Escape closes modal", page.is_hidden("[data-modal]"))
+                page.locator("[data-soon] >> nth=0").scroll_into_view_if_needed()
                 page.click("[data-soon] >> nth=0")
                 check(f"{w}: placeholder links show a toast", "розробці" in page.inner_text("[data-toast]"))
                 check(f"{w}: placeholder phone", "+380 00 000 00 00" in page.inner_text("footer"))
                 page.close()
+                # ---------- other pages ----------
+                for path in ["index.html", "about.html", "pricing.html", "contact.html"]:
+                    errs = []
+                    pg = browser.new_page(viewport={"width": w, "height": h}, locale="uk-UA")
+                    pg.on("pageerror", lambda e: errs.append(str(e)))
+                    pg.on("console", lambda m: m.type == "error" and errs.append(m.text))
+                    pg.goto(URL + path, wait_until="networkidle")
+                    pg.add_style_tag(content="html{scroll-behavior:auto!important}")
+                    check(f"{w} {path}: no JS errors", not errs, "; ".join(errs))
+                    sw = pg.evaluate("document.documentElement.scrollWidth")
+                    check(f"{w} {path}: no horizontal overflow", sw <= w, f"scrollWidth {sw}")
+                    check(f"{w} {path}: images load", not pg.evaluate("[...document.images].filter(i => (i.loading !== 'lazy' || i.getBoundingClientRect().top < innerHeight) && (!i.complete || !i.naturalWidth)).length"))
+                    check(f"{w} {path}: one h1 + current nav item", pg.locator("h1").count() == 1 and pg.get_attribute(".nav__links a[aria-current=page]", "href") == path)
+                    if path == "index.html" and w > 860:
+                        pg.click(".nav__links a[href='pricing.html']")
+                        pg.wait_for_load_state()
+                        check(f"{w}: nav link opens pricing page", pg.url.endswith("pricing.html"))
+                        pg.click(".nav__cta")
+                        pg.wait_for_load_state()
+                        check(f"{w}: 'Зв'язатися' opens contact page", pg.url.endswith("contact.html"))
+                    if path == "about.html":
+                        pg.locator("[data-year='1']").scroll_into_view_if_needed()
+                        pg.click("[data-year='1']")
+                        pg.wait_for_timeout(600)
+                        check(f"{w} about: timeline shows chosen year", pg.locator("[data-ycard='1']").is_visible() and "2021" in pg.inner_text(".tl__card.is-on"))
+                        check(f"{w} about: 10 team members", pg.locator(".person").count() == 10)
+                    if path == "pricing.html":
+                        check(f"{w} pricing: 3 plans, no numeric prices", pg.locator(".plan").count() == 3 and "₴" not in pg.inner_text(".plans") and "$" not in pg.inner_text(".plans"))
+                        pg.click("[data-period='year']")
+                        check(f"{w} pricing: yearly toggle updates billing note", "Річна" in pg.inner_text(".plan [data-bill]") and pg.get_attribute("[data-period='year']", "aria-checked") == "true")
+                        pg.locator(".plan--pop [data-contact]").scroll_into_view_if_needed()
+                        pg.click(".plan--pop [data-contact]")
+                        pg.wait_for_timeout(200)
+                        check(f"{w} pricing: plan button opens modal for that plan", pg.is_visible("[data-modal]") and "Бізнес" in pg.inner_text("#m-title"))
+                        pg.fill("[data-form] input[name=name]", "Ігор")
+                        pg.fill("[data-form] input[name=email]", "igor@shop.ua")
+                        pg.select_option("[data-form] select[name=size]", "11–50 людей")
+                        pg.click("[data-form] button[type=submit]")
+                        check(f"{w} pricing: request confirmed for plan", "«Бізнес»" in pg.inner_text("[data-done]"))
+                        pg.keyboard.press("Escape")
+                        check(f"{w} pricing: comparison table has 9 rows", pg.locator(".compare__table tbody tr").count() == 9)
+                    if path == "contact.html":
+                        f = "[data-form=page]"
+                        pg.click(f + " button[type=submit]")
+                        check(f"{w} contact: empty form rejected", pg.get_attribute(f + " input[name=email]", "aria-invalid") == "true" and pg.inner_text(f + " [data-err]") != "")
+                        pg.fill(f + " input[name=name]", "Марта")
+                        pg.fill(f + " input[name=phone]", "123")
+                        pg.fill(f + " input[name=email]", "marta@agency.ua")
+                        pg.select_option(f + " select[name=size]", "Демонстрація продукту")
+                        pg.fill(f + " textarea[name=msg]", "Хочемо демо для трьох ФОП і ТОВ.")
+                        pg.click(f + " button[type=submit]")
+                        check(f"{w} contact: bad phone rejected", pg.get_attribute(f + " input[name=phone]", "aria-invalid") == "true")
+                        pg.fill(f + " input[name=phone]", "+380 50 123 45 67")
+                        pg.click(f + " button[type=submit]")
+                        check(f"{w} contact: message confirmed", pg.locator(".cform [data-done]").is_visible() and "marta@agency.ua" in pg.inner_text(".cform [data-done]"))
+                        pg.screenshot(path=str(SHOTS / f"contact-{w}.png"))
+                    pg.close()
+
             browser.close()
     finally:
         srv.terminate()

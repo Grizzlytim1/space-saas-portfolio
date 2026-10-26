@@ -3,47 +3,40 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Можливості — Обрій, фінанси та процеси бізнесу з AI</title>
-<meta name="description" content="Обрій — сервіс для фінансів і процесів малого бізнесу з AI-помічником. Дашборди, команда, рахунки й звіти в одному місці.">
+<title>Space — фінанси та процеси бізнесу з AI</title>
+<meta name="description" content="Space — AI-сервіс для фінансів малого бізнесу: рахунки, платежі, податки й аналітика в одному вікні.">
 <meta name="theme-color" content="#010104">
 <link rel="icon" href="assets/img/favicon.svg" type="image/svg+xml">
 <link rel="preload" href="assets/fonts/inter-cyrillic-opsz-normal.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="pg-index">
 <a class="skip" href="#main">Перейти до вмісту</a>
 
 <header class="nav" data-nav>
-  <a class="logo" href="#top" aria-label="Обрій — на початок">
-    <svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#CFFE25"/><path d="M5 22a11 11 0 0 1 22 0" fill="none" stroke="#010104" stroke-width="3" stroke-linecap="round"/><path d="M3 22h26" stroke="#010104" stroke-width="3" stroke-linecap="round"/><circle cx="22" cy="10" r="2.4" fill="#010104"/></svg>
-    <span>Обрій<i>.</i></span>
-  </a>
-  <nav class="nav__links" aria-label="Основна навігація">
-    <a href="#features" aria-current="page">Можливості</a>
-    <a href="#tabs">Інструменти</a>
-    <a href="#reviews">Відгуки</a>
-    <a href="#faq">Питання</a>
-  </nav>
-  <button class="btn btn--white nav__cta" type="button" data-contact><span class="roll" data-roll>Зв'язатися</span></button>
+  <a class="logo" href="index.html" aria-label="Space — на головну"><svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#CFFE25"/><circle cx="16" cy="16" r="6.2" fill="#010104"/><ellipse cx="16" cy="16" rx="12" ry="4.2" fill="none" stroke="#010104" stroke-width="2.2" transform="rotate(-24 16 16)"/><circle cx="25" cy="8" r="1.6" fill="#010104"/></svg><span>Space<i>.</i></span></a>
+  <nav class="nav__links" aria-label="Основна навігація"><a href="index.html" aria-current="page">Головна</a><a href="about.html">Про нас</a><a href="features.html">Можливості</a><a href="pricing.html">Тарифи</a><a href="contact.html">Контакти</a></nav>
+  <a class="btn btn--white nav__cta" href="contact.html">Зв'язатися</a>
   <button class="nav__burger" type="button" aria-expanded="false" aria-controls="mnav" data-burger aria-label="Відкрити меню"><span></span><span></span></button>
 </header>
 <div class="mnav" id="mnav" hidden>
-  <a href="#features">Можливості</a><a href="#tabs">Інструменти</a><a href="#reviews">Відгуки</a><a href="#faq">Питання</a>
-  <button class="btn btn--lime" type="button" data-contact>Зв'язатися</button>
+  <a href="index.html" aria-current="page">Головна</a><a href="about.html">Про нас</a><a href="features.html">Можливості</a><a href="pricing.html">Тарифи</a><a href="contact.html">Контакти</a>
+  <a class="btn btn--lime" href="contact.html">Зв'язатися</a>
 </div>
 
 <main id="main">
-<!-- ===== hero ===== -->
-<section class="hero" id="top">
+<section class="hhero" id="top">
   <canvas class="stars" data-stars aria-hidden="true"></canvas>
-  <div class="hero__text">
-    <p class="pill reveal"><i></i>Можливості</p>
-    <h1 class="h1 reveal">Втіліть свою ідею з&nbsp;сервісом, зробленим із&nbsp;любов'ю.</h1>
-    <p class="lead reveal">Обрій поєднує фінанси, рахунки, команду й аналітику в одному вікні. AI-помічник сам розносить платежі, нагадує про податки й підказує, де бізнес втрачає гроші.</p>
+  <div class="hhero__text">
+    <p class="pill reveal"><i></i>Знайомтеся: AI-сервіс для фінансів бізнесу</p>
+    <h1 class="h1 h1--xl reveal">Перетворіть велику ідею<br>на потужний бізнес</h1>
+    <p class="lead reveal">Space бачить усі ваші рахунки, платежі й податки одночасно — і підказує, що зробити сьогодні, щоб завтра заробити більше.</p>
+    <div class="hhero__btns reveal"><button class="btn btn--lime" type="button" data-contact>→ Почати безкоштовно</button><a class="btn btn--white" href="pricing.html">Переглянути тарифи</a></div>
   </div>
-  <div class="hero__win reveal" aria-hidden="true">
-    <div class="win">
-      <div class="win__bar"><i></i><i></i><i></i><span>app.obrii.ua/dashboard</span></div>
+  <div class="hhero__stage reveal" aria-hidden="true">
+    <img class="hhero__planet" src="assets/photo/planet.webp" alt="">
+    <div class="hhero__win"><div class="win">
+      <div class="win__bar"><i></i><i></i><i></i><span>app.space.ua/dashboard</span></div>
       <div class="win__body win__body--hero">
         <aside class="ui-side">
           <span class="ui-chip ui-chip--on">Огляд</span><span class="ui-chip">Платежі</span><span class="ui-chip">Рахунки</span><span class="ui-chip">Команда</span><span class="ui-chip">Звіти</span>
@@ -58,30 +51,10 @@
           <div class="ui-row ui-row--list"><span></span><span></span><span></span></div>
         </div>
       </div>
-    </div>
+    </div></div>
   </div>
 </section>
-
-<!-- ===== trust ===== -->
-<section class="trust" id="features">
-  <h2 class="h2 center reveal">Нам довіряють компанії<br>по всьому світу</h2>
-  <div class="trust__grid">
-    <article class="card quote reveal">
-      <span class="tag tag--yellow">Слово засновника</span>
-      <blockquote>«Ми хотіли, щоб власник кав'ярні розумів свої гроші так само легко, як фінансовий директор. Обрій — це ваш фінвідділ, який не бере вихідних і ніколи не забуває про дедлайни.»</blockquote>
-      <div class="quote__foot"><div><b>Тарас Ковальчук</b><small>Співзасновник Обрію</small></div><span class="quote__logo"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#CFFE25"/><path d="M5 22a11 11 0 0 1 22 0M3 22h26" fill="none" stroke="#010104" stroke-width="3" stroke-linecap="round"/></svg>Обрій.</span></div>
-    </article>
-    <article class="card stat reveal">
-      <span class="tag tag--green">Бізнесів з нами</span>
-      <p class="stat__num"><span class="odo" data-odo="12">12</span><em>k+</em></p>
-      <p>Від кав'ярень до IT-студій: щодня через Обрій проходять тисячі платежів і рахунків.</p>
-    </article>
-    <article class="card stat reveal">
-      <span class="tag tag--green">Задоволених клієнтів</span>
-      <p class="stat__num"><span class="odo" data-odo="98">98</span><em>%</em></p>
-      <p>Оцінюють підтримку на «відмінно» — відповідаємо в середньому за 4 хвилини.</p>
-    </article>
-  </div>
+<section class="trust trust--home">
   <p class="logos__title">Партнери — провідні компанії та банки</p>
   <div class="logos" aria-label="Логотипи партнерів">
     <div class="logos__track" data-logos>
@@ -94,134 +67,69 @@
       <span class="lg lg--wide">ДНІПРО&nbsp;ТЕХ</span>
     </div>
   </div>
-</section>
-
-<!-- ===== editor ===== -->
-<section class="editor">
-  <h2 class="h2 center reveal">Перетворіть ідею на реальність<br>із бездоганною точністю.</h2>
-  <div class="scaler reveal" data-scaler data-w="1240" data-h="720">
-    <div class="ed" aria-hidden="true">
-      <div class="ed__top"><div class="ed__user"><span class="ui-face ui-face--sm"></span><div><b>Звіт для інвесторів</b><small>Чернетка · збережено</small></div></div><div class="ed__tools"><i></i><i></i><i></i><span>1240 px</span></div><div class="ed__share"><span>Поділитися</span><span class="ed__avs"><i></i><i></i><i></i></span></div></div>
-      <aside class="ed__left">
-        <div class="ed__tabs"><b>Блоки</b><span>Сторінки</span><span>Дані</span></div>
-        <p class="ed__label">Віджети</p>
-        <div class="ed__grid"><span><i class="ic ic--chart"></i>Графік</span><span><i class="ic ic--table"></i>Таблиця</span><span><i class="ic ic--kpi"></i>KPI</span><span><i class="ic ic--text"></i>Текст</span><span><i class="ic ic--pie"></i>Кругова</span><span><i class="ic ic--goal"></i>Ціль</span></div>
-        <p class="ed__label">Джерела</p>
-        <div class="ed__src"><span><i style="--c:#CFFE25"></i>Монобанк · ФОП</span><span><i style="--c:#7aa2ff"></i>Приват · ТОВ</span><span><i style="--c:#ffb86b"></i>Каса «Кава й крапка»</span></div>
-        <p class="ed__label">AI-помічник</p>
-        <div class="ed__ai">Зібрати звіт за квартал і порівняти з минулим роком?</div>
-      </aside>
-      <div class="ed__canvas">
-        <div class="ed__frame">
-          <div class="site">
-            <div class="site__nav"><span class="site__logo">● Обрій</span><span class="site__links"><i></i><i></i><i></i><i></i></span><span class="site__btn">Увійти</span></div>
-            <img class="site__planet" src="assets/photo/planet.webp" alt="">
-            <p class="site__pill">● Квартальний звіт готовий</p>
-            <p class="site__h">Ваш бізнес<br>на новій орбіті</p>
-            <p class="site__p">Виручка +31% · маржа 24% · 0 прострочених рахунків</p>
-            <div class="site__btns"><span class="site__b1">→ Відкрити звіт</span><span class="site__b2">Експорт PDF</span></div>
-          </div>
-        </div>
-      </div>
-      <aside class="ed__right">
-        <div class="ed__tabs"><b>Дизайн</b><span>Дані</span><span>Доступ</span></div>
-        <p class="ed__label">Розмір</p>
-        <div class="ed__props"><span>Ширина <b>1240</b></span><span>Висота <b>Авто</b></span><span>Відступ <b>32</b></span><span>Радіус <b>16</b></span></div>
-        <p class="ed__label">Колір акценту</p>
-        <div class="ed__colors"><i style="--c:#CFFE25" class="on"></i><i style="--c:#7aa2ff"></i><i style="--c:#ff7a6b"></i><i style="--c:#ffffff"></i></div>
-        <p class="ed__label">Період</p>
-        <div class="ed__seg"><span>Місяць</span><b>Квартал</b><span>Рік</span></div>
-        <p class="ed__label">Показувати</p>
-        <div class="ed__toggles"><span>Виручка <i class="on"></i></span><span>Маржа <i class="on"></i></span><span>Прогноз AI <i></i></span></div>
-      </aside>
-    </div>
-  </div>
-  <div class="feats">
-    <article class="feat reveal"><h3>Миттєва швидкість</h3><p>Дашборд відкривається менш ніж за секунду, а банківські виписки підтягуються автоматично. Працює однаково добре на ноутбуці й смартфоні.</p></article>
-    <article class="feat reveal"><h3>Зрозумілий досвід</h3><p>Жодних бухгалтерських термінів там, де можна сказати простіше. Інтерфейс, у якому розбираєшся за п'ять хвилин без навчання.</p></article>
-    <article class="feat reveal"><h3>Під ваш бізнес</h3><p>Створюйте, призначайте й контролюйте задачі перетягуванням. Власні категорії, ролі й звіти — саме так, як ви звикли працювати.</p></article>
+  <h2 class="h2 center reveal" style="margin-top:110px">Нам довіряють компанії<br>по всьому світу</h2>
+  <div class="trust__grid">
+    <article class="card quote reveal">
+      <span class="tag tag--yellow">Слово засновника</span>
+      <blockquote>«Ми хотіли, щоб власник кав'ярні розумів свої гроші так само легко, як фінансовий директор. Space — це ваш фінвідділ, який не бере вихідних і ніколи не забуває про дедлайни.»</blockquote>
+      <div class="quote__foot"><div><b>Тарас Ковальчук</b><small>Співзасновник Space</small></div><span class="quote__logo"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#CFFE25"/><circle cx="16" cy="16" r="6.2" fill="#010104"/><ellipse cx="16" cy="16" rx="12" ry="4.2" fill="none" stroke="#010104" stroke-width="2.2" transform="rotate(-24 16 16)"/><circle cx="25" cy="8" r="1.6" fill="#010104"/></svg>Space.</span></div>
+    </article>
+    <article class="card stat reveal">
+      <span class="tag tag--green">Бізнесів з нами</span>
+      <p class="stat__num"><span class="odo" data-odo="12">12</span><em>k+</em></p>
+      <p>Від кав'ярень до IT-студій: щодня через Space проходять тисячі платежів і рахунків.</p>
+    </article>
+    <article class="card stat reveal">
+      <span class="tag tag--green">Задоволених клієнтів</span>
+      <p class="stat__num"><span class="odo" data-odo="98">98</span><em>%</em></p>
+      <p>Оцінюють підтримку на «відмінно» — відповідаємо в середньому за 4 хвилини.</p>
+    </article>
   </div>
 </section>
-
-<!-- ===== tabs ===== -->
-<section class="tabs-sec" id="tabs">
-  <h2 class="h2 center reveal">Перетворіть ідею<br>на реальність без зусиль.</h2>
-  <p class="lead center reveal">Чотири інструменти, які закривають 90% щоденної фінансової рутини. Оберіть, що цікавить найбільше.</p>
-  <div class="tabs reveal" role="tablist" aria-label="Інструменти Обрію" data-tabs>
-    <button role="tab" id="t-assets" aria-controls="p-assets" aria-selected="true" tabindex="0">Власні ресурси</button>
-    <button role="tab" id="t-ui" aria-controls="p-ui" aria-selected="false" tabindex="-1">Огляд інтерфейсу</button>
-    <button role="tab" id="t-team" aria-controls="p-team" aria-selected="false" tabindex="-1">Командна робота</button>
-    <button role="tab" id="t-money" aria-controls="p-money" aria-selected="false" tabindex="-1">Монетизація</button>
-  </div>
-  <div class="panels">
-    <div class="panel" role="tabpanel" id="p-assets" aria-labelledby="t-assets">
-      <div class="panel__text"><span class="tag tag--green">Власні ресурси</span><h3 class="h3">Усе, що потрібно бізнесу, — під рукою</h3><p>Шаблони рахунків, договорів і звітів з вашим логотипом. Завантажте один раз — і AI сам підставлятиме реквізити клієнтів.</p><button class="btn btn--lime" type="button" data-contact>→ Почати зараз</button></div>
-      <div class="panel__ui" aria-hidden="true"><div class="win win--sm"><div class="win__bar"><i></i><i></i><i></i><span>Бібліотека</span></div><div class="lib">
-        <div class="lib__item"><i class="doc doc--lime"></i><b>Рахунок-фактура</b><small>12 використань</small></div>
-        <div class="lib__item"><i class="doc"></i><b>Договір послуг</b><small>8 використань</small></div>
-        <div class="lib__item"><i class="doc doc--blue"></i><b>Акт виконаних робіт</b><small>21 використання</small></div>
-        <div class="lib__item"><i class="doc doc--orange"></i><b>Звіт для банку</b><small>3 використання</small></div>
-        <div class="lib__item lib__item--add"><b>+ Новий шаблон</b></div>
-        <div class="lib__item"><i class="doc"></i><b>Комерційна пропозиція</b><small>5 використань</small></div>
-      </div></div></div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-ui" aria-labelledby="t-ui" hidden>
-      <div class="panel__text"><span class="tag tag--green">Огляд інтерфейсу</span><h3 class="h3">Один екран замість п'яти таблиць</h3><p>Баланс, борги клієнтів, податки й прогноз на місяць — на одній панелі. Інтуїтивний інтерфейс, у якому розбираєшся без інструкцій.</p><button class="btn btn--lime" type="button" data-contact>→ Почати зараз</button></div>
-      <div class="panel__ui" aria-hidden="true"><div class="win win--sm"><div class="win__bar"><i></i><i></i><i></i><span>Огляд</span></div><div class="ov">
+<section class="bento-sec">
+  <h2 class="h2 center reveal">Створюйте легше,<br>ніж будь-коли.</h2>
+  <p class="lead center reveal">Один спільний простір для власника, бухгалтера й команди: кожен бачить своє і ніхто нічого не губить.</p>
+  <div class="bento">
+    <article class="card bento__big reveal">
+      <span class="tag tag--green">Огляд інтерфейсу</span>
+      <h3 class="h3">Зручний інтерфейс, який люблять з першого дня</h3>
+      <p>Зрозуміла навігація й підказки замість інструкцій: розібратися з фінансами можна за п'ять хвилин.</p>
+      <div class="win win--sm bento__ui" aria-hidden="true"><div class="win__bar"><i></i><i></i><i></i><span>Огляд</span></div><div class="ov">
         <div class="ov__kpi"><small>Виручка</small><b>1,24 млн ₴</b><span class="up">+18%</span></div>
         <div class="ov__kpi"><small>Витрати</small><b>812 тис. ₴</b><span class="down">−4%</span></div>
         <div class="ov__kpi"><small>Податки</small><b>до 20.11</b><span>3 дні</span></div>
         <div class="ov__line"><svg viewBox="0 0 300 90" preserveAspectRatio="none"><path d="M0 70 C40 60 60 72 90 50 S150 40 180 30 240 36 300 8" fill="none" stroke="#CFFE25" stroke-width="3"/><path d="M0 70 C40 60 60 72 90 50 S150 40 180 30 240 36 300 8 V90 H0Z" fill="url(#lg1)"/><defs><linearGradient id="lg1" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#CFFE25" stop-opacity=".35"/><stop offset="1" stop-color="#CFFE25" stop-opacity="0"/></linearGradient></defs></svg></div>
-      </div></div></div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-team" aria-labelledby="t-team" hidden>
-      <div class="panel__text"><span class="tag tag--green">Командна робота</span><h3 class="h3">Бухгалтер, менеджер і ви — в одному просторі</h3><p>Коментарі до платежів, погодження витрат в один клік і ролі з різним доступом. Ніяких скріншотів у месенджерах.</p><button class="btn btn--lime" type="button" data-contact>→ Почати зараз</button></div>
-      <div class="panel__ui" aria-hidden="true"><div class="win win--sm"><div class="win__bar"><i></i><i></i><i></i><span>Погодження</span></div><div class="team">
-        <div class="msg"><span class="av" style="--c:#ffb86b">О</span><div><b>Оля · бухгалтерка</b><p>Рахунок від друкарні на 14 200 ₴ — погоджуємо?</p></div></div>
-        <div class="msg msg--me"><div><b>Ви</b><p>Так, оплатити до п'ятниці 👍</p></div><span class="av" style="--c:#CFFE25">Я</span></div>
-        <div class="msg"><span class="av" style="--c:#7aa2ff">AI</span><div><b>Помічник</b><p>Запланував платіж на 15.11 і додав у звіт «Маркетинг».</p></div></div>
-        <div class="team__ok">✓ Погоджено · 2 з 2</div>
-      </div></div></div>
-    </div>
-    <div class="panel" role="tabpanel" id="p-money" aria-labelledby="t-money" hidden>
-      <div class="panel__text"><span class="tag tag--green">Монетизація</span><h3 class="h3">Отримуйте оплату швидше</h3><p>Посилання на оплату в рахунку, автоматичні нагадування боржникам і підписки для постійних клієнтів. Гроші приходять — Обрій сам усе розносить.</p><button class="btn btn--lime" type="button" data-contact>→ Почати зараз</button></div>
-      <div class="panel__ui" aria-hidden="true"><div class="win win--sm"><div class="win__bar"><i></i><i></i><i></i><span>Надходження</span></div><div class="money">
-        <div class="money__ring"><svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="48" fill="none" stroke="#1d1f24" stroke-width="14"/><circle cx="60" cy="60" r="48" fill="none" stroke="#CFFE25" stroke-width="14" stroke-dasharray="301.6" stroke-dashoffset="54" stroke-linecap="round" transform="rotate(-90 60 60)"/></svg><b>82%</b><small>оплачено вчасно</small></div>
-        <ul class="money__list"><li><span>Студія «Зерно»</span><b class="up">+8 400 ₴</b></li><li><span>ФОП Мельник</span><b class="up">+2 150 ₴</b></li><li><span>Підписка «Бізнес»</span><b class="up">+990 ₴</b></li><li><span>Нагадування надіслано</span><b>3</b></li></ul>
-      </div></div></div>
-    </div>
+      </div></div>
+    </article>
+    <article class="card bento__card reveal">
+      <h3>Легкі інтеграції</h3><p>Банки, каси, маркетплейси й бухгалтерські програми — підключення в кілька кліків.</p>
+      <div class="integr" aria-hidden="true"><span style="--c:#CFFE25">mono</span><span style="--c:#7aa2ff">Приват</span><span style="--c:#ffb86b">Каса</span><span style="--c:#ff7a6b">Prom</span><span style="--c:#c9a2ff">M.E.Doc</span><span style="--c:#7af0c8">Google</span></div>
+    </article>
+    <article class="card bento__card bento__card--num reveal">
+      <p class="bento__num">24/7</p><h3>Підтримка</h3><p>Відповідаємо українською вдень і вночі — у чаті, телефоном чи поштою.</p>
+    </article>
+    <article class="card bento__card reveal">
+      <h3>Команда, якій довіряють</h3><p>Фінансисти й бухгалтери з досвідом понад 10 років допоможуть з налаштуванням.</p>
+      <div class="faces" aria-hidden="true"><img src="assets/photo/review-1-sm.webp" alt=""><img src="assets/photo/review-2-sm.webp" alt=""><img src="assets/photo/review-3-sm.webp" alt=""><span>+12</span></div>
+    </article>
   </div>
 </section>
-
 <!-- ===== reviews ===== -->
 <section class="reviews" id="reviews">
   <h2 class="h2 center reveal">Відгуки клієнтів<br>їхніми словами</h2>
-  <p class="lead center reveal">Понад дванадцять тисяч підприємців уже перенесли фінанси в Обрій. Ось що кажуть деякі з них.</p>
+  <p class="lead center reveal">Понад дванадцять тисяч підприємців уже перенесли фінанси у Space. Ось що кажуть деякі з них.</p>
   <div class="slider reveal" data-slider aria-roledescription="карусель" aria-label="Відгуки">
     <div class="slider__media">
       <div class="slider__photos"><img src="assets/photo/review-1.webp" alt="Андрій Савчук" width="480" height="480"><img src="assets/photo/review-2.webp" alt="Марія Бондар" width="480" height="480" loading="lazy"><img src="assets/photo/review-3.webp" alt="Віктор Гнатюк" width="480" height="480" loading="lazy"></div>
       <div class="slider__arrows"><button type="button" data-prev aria-label="Попередній відгук"><svg viewBox="0 0 24 24"><path d="M19 12H5m6-6-6 6 6 6"/></svg></button><button type="button" data-next aria-label="Наступний відгук"><svg viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6"/></svg></button></div>
     </div>
     <div class="slider__quotes" aria-live="polite">
-      <figure class="rv is-on"><p class="rv__rate"><svg viewBox="0 0 24 24"><path d="M12 2 15 9l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"/></svg>4,9</p><blockquote>«Обрій змінив усе. За пів року ми втричі скоротили час на бухгалтерію, а нагадування боржникам повернули нам понад 200 тисяч гривень, про які я вже й забув.»</blockquote><figcaption><div><b>Андрій Савчук</b><small>Засновник кав'ярні «Кава й крапка»</small></div><span class="rv__logo">☕ Кава й крапка</span></figcaption></figure>
+      <figure class="rv is-on"><p class="rv__rate"><svg viewBox="0 0 24 24"><path d="M12 2 15 9l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"/></svg>4,9</p><blockquote>«Space змінив усе. За пів року ми втричі скоротили час на бухгалтерію, а нагадування боржникам повернули нам понад 200 тисяч гривень, про які я вже й забув.»</blockquote><figcaption><div><b>Андрій Савчук</b><small>Засновник кав'ярні «Кава й крапка»</small></div><span class="rv__logo">☕ Кава й крапка</span></figcaption></figure>
       <figure class="rv"><p class="rv__rate"><svg viewBox="0 0 24 24"><path d="M12 2 15 9l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"/></svg>5,0</p><blockquote>«Нарешті я бачу, скільки реально заробляє студія, а не лише суму на рахунку. AI-підказки про підписки зекономили нам 9 тисяч на місяць.»</blockquote><figcaption><div><b>Марія Бондар</b><small>Арт-директорка студії «Зерно»</small></div><span class="rv__logo">◆ Зерно</span></figcaption></figure>
       <figure class="rv"><p class="rv__rate"><svg viewBox="0 0 24 24"><path d="M12 2 15 9l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z"/></svg>4,8</p><blockquote>«Три ФОПи й ТОВ — раніше це були чотири таблиці й постійний страх пропустити податок. Тепер одна панель і спокійний сон.»</blockquote><figcaption><div><b>Віктор Гнатюк</b><small>Власник мережі СТО «Гвинт»</small></div><span class="rv__logo">⚙ Гвинт</span></figcaption></figure>
     </div>
   </div>
 </section>
-
-<!-- ===== faq ===== -->
-<section class="faq" id="faq">
-  <h2 class="h2 center reveal">Маєте питання?<br>Ми тут, щоб допомогти!</h2>
-  <div class="faq__list" data-faq>
-    <div class="qa is-open"><button type="button" aria-expanded="true" aria-controls="a1" id="q1">Чи безпечно підключати банківські рахунки?<i></i></button><div class="qa__a" id="a1" role="region" aria-labelledby="q1"><p>Так. Ми отримуємо лише виписки в режимі «тільки читання» через офіційні API банків. Обрій не може здійснювати платежі без вашого підтвердження, а дані шифруються й зберігаються в ЄС.</p></div></div>
-    <div class="qa"><button type="button" aria-expanded="false" aria-controls="a2" id="q2">Скільки часу займає налаштування?<i></i></button><div class="qa__a" id="a2" role="region" aria-labelledby="q2" hidden><p>Близько 15 хвилин: підключаєте банк, обираєте систему оподаткування — і AI сам розкладає історію платежів по категоріях за останні 12 місяців.</p></div></div>
-    <div class="qa"><button type="button" aria-expanded="false" aria-controls="a3" id="q3">Чи можна скасувати підписку будь-коли?<i></i></button><div class="qa__a" id="a3" role="region" aria-labelledby="q3" hidden><p>Звісно. Жодних контрактів і штрафів: скасування в один клік у налаштуваннях, а всі ваші дані можна вивантажити в Excel чи PDF.</p></div></div>
-    <div class="qa"><button type="button" aria-expanded="false" aria-controls="a4" id="q4">Чи працюєте ви з ФОП і ТОВ одночасно?<i></i></button><div class="qa__a" id="a4" role="region" aria-labelledby="q4" hidden><p>Так, в одному акаунті можна вести кілька ФОП і ТОВ, перемикатися між ними або дивитися зведений звіт по всьому бізнесу.</p></div></div>
-    <div class="qa"><button type="button" aria-expanded="false" aria-controls="a5" id="q5">Для яких галузей підходить Обрій?<i></i></button><div class="qa__a" id="a5" role="region" aria-labelledby="q5" hidden><p>Для сфери послуг, кав'ярень і ресторанів, інтернет-магазинів, IT-студій і агенцій — усюди, де важливо бачити гроші в реальному часі.</p></div></div>
-  </div>
-</section>
-
 <!-- ===== cta ===== -->
 <section class="cta">
   <div class="cta__screens" aria-hidden="true">
@@ -239,22 +147,19 @@
 
 <footer class="foot">
   <div class="foot__top">
-    <div class="foot__brand">
-      <a class="logo" href="#top" aria-label="Обрій — на початок"><svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#CFFE25"/><path d="M5 22a11 11 0 0 1 22 0" fill="none" stroke="#010104" stroke-width="3" stroke-linecap="round"/><path d="M3 22h26" stroke="#010104" stroke-width="3" stroke-linecap="round"/><circle cx="22" cy="10" r="2.4" fill="#010104"/></svg><span>Обрій<i>.</i></span></a>
-      <p>Ваш фінансовий процес з AI.</p>
-    </div>
-    <nav class="foot__col" aria-label="Швидкі посилання"><p>Швидкі посилання</p><a href="#features">Можливості</a><a href="#tabs">Інструменти</a><a href="#reviews">Відгуки</a><a href="#faq">Питання</a></nav>
+    <div class="foot__brand"><a class="logo" href="index.html" aria-label="Space — на головну"><svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#CFFE25"/><circle cx="16" cy="16" r="6.2" fill="#010104"/><ellipse cx="16" cy="16" rx="12" ry="4.2" fill="none" stroke="#010104" stroke-width="2.2" transform="rotate(-24 16 16)"/><circle cx="25" cy="8" r="1.6" fill="#010104"/></svg><span>Space<i>.</i></span></a><p>Ваш фінансовий процес з AI.</p></div>
+    <nav class="foot__col" aria-label="Швидкі посилання"><p>Швидкі посилання</p><a href="index.html">Головна</a><a href="about.html">Про нас</a><a href="features.html">Можливості</a><a href="pricing.html">Тарифи</a><a href="contact.html">Контакти</a></nav>
     <nav class="foot__col" aria-label="Інші сторінки"><p>Сторінки</p><a href="#" data-soon>Блог</a><a href="#" data-soon>Кар'єра</a><a href="#" data-soon>Інтеграції</a><a href="#" data-soon>Статус сервісу</a></nav>
     <div class="foot__col"><p>Наш офіс</p><span>вул. Зоряна, 12, Київ, 01001, Україна</span><p class="foot__h2">Телефон</p><a href="tel:+380000000000">+380 00 000 00 00</a></div>
   </div>
-  <div class="foot__bottom"><span>© 2026 Обрій. Концепт для портфоліо — бренд і тексти вигадані.</span><span class="foot__legal"><a href="#" data-soon>Політика конфіденційності</a><a href="#" data-soon>Умови використання</a></span></div>
+  <div class="foot__bottom"><span>© 2026 Space. Концепт для портфоліо — бренд і тексти вигадані.</span><span class="foot__legal"><a href="#" data-soon>Політика конфіденційності</a><a href="#" data-soon>Умови використання</a></span></div>
 </footer>
 
 <div class="modal" data-modal hidden>
   <div class="modal__box" role="dialog" aria-modal="true" aria-labelledby="m-title" tabindex="-1">
     <button class="modal__x" type="button" data-close aria-label="Закрити">✕</button>
     <p class="pill"><i></i>14 днів безкоштовно</p>
-    <h2 class="h3" id="m-title">Почнімо роботу з Обрієм</h2>
+    <h2 class="h3" id="m-title">Почнімо роботу з Space</h2>
     <form class="form" data-form novalidate>
       <label>Ім'я<input name="name" autocomplete="name" placeholder="Олена"></label>
       <label>Робочий email<input name="email" type="email" autocomplete="email" placeholder="olena@company.ua"></label>
