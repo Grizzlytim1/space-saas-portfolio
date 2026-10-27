@@ -31,7 +31,7 @@ def header(active):
 
 FOOTER = f"""<footer class="foot">
   <div class="foot__top">
-    <div class="foot__brand">{LOGO}<p>Ваш фінансовий процес з AI.</p></div>
+    <div class="foot__brand">{LOGO}<p>Фінанси й процеси малого бізнесу з AI-помічником.</p><div class="foot__social"><a href="#" data-soon aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.5 9v9M6.5 6v.01M10.5 18v-5a3 3 0 0 1 6 0v5M10.5 9v9"/></svg></a><a href="#" data-soon aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/></svg></a><a href="#" data-soon aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m10 9.5 5 2.5-5 2.5Z"/></svg></a></div><p class="foot__status"><i></i>Усі системи працюють</p></div>
     <nav class="foot__col" aria-label="Швидкі посилання"><p>Швидкі посилання</p>{"".join(f'<a href="{h}">{t}</a>' for h, t in NAV)}</nav>
     <nav class="foot__col" aria-label="Інші сторінки"><p>Сторінки</p><a href="#" data-soon>Блог</a><a href="#" data-soon>Кар'єра</a><a href="#" data-soon>Інтеграції</a><a href="#" data-soon>Статус сервісу</a></nav>
     <div class="foot__col"><p>Наш офіс</p><span>вул. Зоряна, 12, Київ, 01001, Україна</span><p class="foot__h2">Телефон</p><a href="tel:+380000000000">+380 00 000 00 00</a></div>
@@ -89,7 +89,7 @@ HOME = f"""<section class="hhero" id="top">
   <canvas class="stars" data-stars aria-hidden="true"></canvas>
   <div class="hhero__text">
     <p class="pill reveal"><i></i>Знайомтеся: AI-сервіс для фінансів бізнесу</p>
-    <h1 class="h1 h1--xl reveal">Перетворіть велику ідею<br>на потужний бізнес</h1>
+    <h1 class="h1 h1--xl reveal">Фінанси вашого бізнесу —<br>під повним контролем</h1>
     <p class="lead reveal">Space бачить усі ваші рахунки, платежі й податки одночасно — і підказує, що зробити сьогодні, щоб завтра заробити більше.</p>
     <div class="hhero__btns reveal"><button class="btn btn--lime" type="button" data-contact>→ Почати безкоштовно</button><a class="btn btn--white" href="pricing.html">Переглянути тарифи</a></div>
   </div>
@@ -100,11 +100,13 @@ HOME = f"""<section class="hhero" id="top">
 </section>
 <section class="trust trust--home">
   {LOGOS}
-  <h2 class="h2 center reveal" style="margin-top:110px">Нам довіряють компанії<br>по всьому світу</h2>
+  <p class="eyebrow reveal" style="margin-top:110px">Довіра</p>
+  <h2 class="h2 center reveal">Нам довіряють понад<br>12&nbsp;000 компаній</h2>
   {TRUST}
 </section>
 <section class="bento-sec">
-  <h2 class="h2 center reveal">Створюйте легше,<br>ніж будь-коли.</h2>
+  <p class="eyebrow reveal">Платформа</p>
+  <h2 class="h2 center reveal">Один простір для власника,<br>бухгалтера й команди</h2>
   <p class="lead center reveal">Один спільний простір для власника, бухгалтера й команди: кожен бачить своє і ніхто нічого не губить.</p>
   <div class="bento">
     <article class="card bento__big reveal">
@@ -127,6 +129,15 @@ HOME = f"""<section class="hhero" id="top">
   </div>
 </section>
 {REVIEWS}
+<section class="sec-band">
+  <div class="sec-band__head"><p class="eyebrow">Безпека</p><h2 class="h3">Захист даних банківського рівня</h2></div>
+  <ul class="sec-band__list">
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><b>Шифрування AES-256</b><span>Дані зашифровані під час передачі та зберігання</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><b>Сервери в ЄС</b><span>Резервні копії щодня в двох дата-центрах</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg><b>Двофакторний вхід</b><span>Ролі й права доступу для кожного в команді</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><b>Лише читання</b><span>Space не може провести платіж без вашого підтвердження</span></li>
+  </ul>
+</section>
 {CTA}"""
 
 # ----------------------------------------------------------------------
@@ -135,7 +146,7 @@ TEAM = [("Давид Чен", "Директор з маркетингу"), ("Я�
         ("Євген Смик", "Бренд-менеджер"), ("Софія Кім", "SEO-спеціалістка")]
 COLORS = ["#CFFE25", "#7aa2ff", "#ffb86b", "#ff7a6b", "#c9a2ff", "#7af0c8"]
 TEAM_HTML = "".join(
-    f'<article class="person reveal"><span class="person__av" style="--c:{COLORS[i % 6]}">{n.split()[0][0]}{n.split()[1][0]}</span><h3>{n}</h3><p>{r}</p></article>'
+    f'<article class="person reveal"><span class="person__av">{n.split()[0][0]}{n.split()[1][0]}</span><div><h3>{n}</h3><p>{r}</p></div><a class="person__in" href="#" data-soon aria-label="LinkedIn: {n}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 9v9M6.5 6v.01M10.5 18v-5a3 3 0 0 1 6 0v5M10.5 9v9" /></svg></a></article>'
     for i, (n, r) in enumerate(TEAM))
 YEARS = [("2020", "Ідея на кухні", "Двоє друзів-бухгалтерів зробили таблицю, яка сама розносила платежі ФОП. За місяць нею користувалися 40 знайомих."),
          ("2021", "Перша версія", "Запустили веб-застосунок із підключенням банків і спільним доступом для бухгалтера й власника."),
@@ -160,21 +171,24 @@ ABOUT = f"""<section class="phero" id="top">
 </section>
 <section class="trust">{LOGOS}</section>
 <section class="values">
-  <h2 class="h2 center reveal">Співпраця, що створює<br>цінність для всіх</h2>
+  <p class="eyebrow reveal">Цінності</p>
+  <h2 class="h2 center reveal">Принципи, на яких<br>ми будуємо продукт</h2>
   <div class="values__grid">
-    <article class="card value reveal"><span class="value__ico">◎</span><h3>Прозорість</h3><p>Ніяких дрібних шрифтів: ви завжди знаєте, що відбувається з вашими грошима й даними.</p></article>
-    <article class="card value reveal"><span class="value__ico">⚡</span><h3>Швидкість</h3><p>Випускаємо оновлення щотижня й відповідаємо в підтримці в середньому за 4 хвилини.</p></article>
-    <article class="card value reveal"><span class="value__ico">♡</span><h3>Турбота</h3><p>Робимо продукт для людей, а не для звітів. Кожну функцію тестуємо з реальними підприємцями.</p></article>
+    <article class="card value reveal"><span class="value__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg></span><h3>Прозорість</h3><p>Ніяких дрібних шрифтів: ви завжди знаєте, що відбувається з вашими грошима й даними.</p></article>
+    <article class="card value reveal"><span class="value__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M13 2 4 14h7l-1 8 9-12h-7l1-8Z"/></svg></span><h3>Швидкість</h3><p>Випускаємо оновлення щотижня й відповідаємо в підтримці в середньому за 4 хвилини.</p></article>
+    <article class="card value reveal"><span class="value__ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20s-7-4.4-9.3-9A5 5 0 0 1 12 6a5 5 0 0 1 9.3 5C19 15.6 12 20 12 20Z"/></svg></span><h3>Турбота</h3><p>Робимо продукт для людей, а не для звітів. Кожну функцію тестуємо з реальними підприємцями.</p></article>
   </div>
 </section>
 <section class="tl" data-timeline>
-  <h2 class="h2 center reveal">Від скромного початку<br>до сьогодні</h2>
+  <p class="eyebrow reveal">Історія</p>
+  <h2 class="h2 center reveal">Шість років<br>зростання</h2>
   <p class="lead center reveal">Оберіть рік, щоб побачити, як ріс Space.</p>
   <div class="tl__track reveal" role="tablist" aria-label="Роки історії">{TL_BTNS}<span class="tl__bar" data-tl-bar></span></div>
   <div class="tl__cards" aria-live="polite">{TL_CARDS}</div>
 </section>
 <section class="team-sec">
-  <h2 class="h2 center reveal">Люди, які стоять<br>за Space</h2>
+  <p class="eyebrow reveal">Команда</p>
+  <h2 class="h2 center reveal">Люди, які<br>створюють Space</h2>
   <div class="team-grid">{TEAM_HTML}</div>
 </section>
 {CTA}"""
@@ -224,8 +238,17 @@ PRICING = f"""<section class="phero phero--center" id="top">
 <section class="plans-sec">
   <div class="plans">{PLAN_HTML}</div>
 </section>
-<section class="trust">{LOGOS}</section>
+<section class="sec-band">
+  <div class="sec-band__head"><p class="eyebrow">Безпека</p><h2 class="h3">Захист даних банківського рівня</h2></div>
+  <ul class="sec-band__list">
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><b>Шифрування AES-256</b><span>Дані зашифровані під час передачі та зберігання</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><b>Сервери в ЄС</b><span>Резервні копії щодня в двох дата-центрах</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg><b>Двофакторний вхід</b><span>Ролі й права доступу для кожного в команді</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><b>Лише читання</b><span>Space не може провести платіж без вашого підтвердження</span></li>
+  </ul>
+</section>
 <section class="compare">
+  <p class="eyebrow reveal">Порівняння</p>
   <h2 class="h2 center reveal">Порівняйте тарифи</h2>
   <div class="compare__wrap reveal" tabindex="0" role="region" aria-label="Таблиця порівняння тарифів">
     <table class="compare__table">

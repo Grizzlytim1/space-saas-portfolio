@@ -61,19 +61,17 @@
       <button class="btn btn--white btn--wide" type="button" data-contact data-plan="Корпоративний">Дізнатися ціну</button>
     </article></div>
 </section>
-<section class="trust"><p class="logos__title">Партнери — провідні компанії та банки</p>
-  <div class="logos" aria-label="Логотипи партнерів">
-    <div class="logos__track" data-logos>
-      <span class="lg"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2"/><path d="M7 12h10M12 7v10" stroke="currentColor" stroke-width="2"/></svg>Nordbank</span>
-      <span class="lg"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4" fill="none" stroke="currentColor" stroke-width="2"/><rect x="8" y="8" width="8" height="8" fill="currentColor"/></svg>kvadrat</span>
-      <span class="lg lg--serif">Lumen&amp;Co</span>
-      <span class="lg"><svg viewBox="0 0 24 24"><path d="M12 2 15 9l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1Z" fill="currentColor"/></svg>Polaris</span>
-      <span class="lg"><svg viewBox="0 0 24 24"><path d="M3 18 9 6l4 8 3-5 5 9Z" fill="currentColor"/></svg>Mriya Pay</span>
-      <span class="lg"><svg viewBox="0 0 24 24"><path d="m12 2 8.7 5v10L12 22l-8.7-5V7Z" fill="none" stroke="currentColor" stroke-width="2"/></svg>hexa.io</span>
-      <span class="lg lg--wide">ДНІПРО&nbsp;ТЕХ</span>
-    </div>
-  </div></section>
+<section class="sec-band">
+  <div class="sec-band__head"><p class="eyebrow">Безпека</p><h2 class="h3">Захист даних банківського рівня</h2></div>
+  <ul class="sec-band__list">
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><b>Шифрування AES-256</b><span>Дані зашифровані під час передачі та зберігання</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg><b>Сервери в ЄС</b><span>Резервні копії щодня в двох дата-центрах</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 4 6v6c0 5 3.4 8 8 9 4.6-1 8-4 8-9V6l-8-3Z"/><path d="m9 12 2 2 4-4"/></svg><b>Двофакторний вхід</b><span>Ролі й права доступу для кожного в команді</span></li>
+    <li><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></svg><b>Лише читання</b><span>Space не може провести платіж без вашого підтвердження</span></li>
+  </ul>
+</section>
 <section class="compare">
+  <p class="eyebrow reveal">Порівняння</p>
   <h2 class="h2 center reveal">Порівняйте тарифи</h2>
   <div class="compare__wrap reveal" tabindex="0" role="region" aria-label="Таблиця порівняння тарифів">
     <table class="compare__table">
@@ -84,7 +82,8 @@
 </section>
 <!-- ===== faq ===== -->
 <section class="faq" id="faq">
-  <h2 class="h2 center reveal">Маєте питання?<br>Ми тут, щоб допомогти!</h2>
+  <p class="eyebrow reveal">FAQ</p>
+  <h2 class="h2 center reveal">Відповіді на часті<br>запитання</h2>
   <div class="faq__list" data-faq>
     <div class="qa is-open"><button type="button" aria-expanded="true" aria-controls="a1" id="q1">Чи безпечно підключати банківські рахунки?<i></i></button><div class="qa__a" id="a1" role="region" aria-labelledby="q1"><p>Так. Ми отримуємо лише виписки в режимі «тільки читання» через офіційні API банків. Space не може здійснювати платежі без вашого підтвердження, а дані шифруються й зберігаються в ЄС.</p></div></div>
     <div class="qa"><button type="button" aria-expanded="false" aria-controls="a2" id="q2">Скільки часу займає налаштування?<i></i></button><div class="qa__a" id="a2" role="region" aria-labelledby="q2" hidden><p>Близько 15 хвилин: підключаєте банк, обираєте систему оподаткування — і AI сам розкладає історію платежів по категоріях за останні 12 місяців.</p></div></div>
@@ -97,7 +96,7 @@
 
 <footer class="foot">
   <div class="foot__top">
-    <div class="foot__brand"><a class="logo" href="index.html" aria-label="Space — на головну"><svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#CFFE25"/><circle cx="16" cy="16" r="6.2" fill="#010104"/><ellipse cx="16" cy="16" rx="12" ry="4.2" fill="none" stroke="#010104" stroke-width="2.2" transform="rotate(-24 16 16)"/><circle cx="25" cy="8" r="1.6" fill="#010104"/></svg><span>Space<i>.</i></span></a><p>Ваш фінансовий процес з AI.</p></div>
+    <div class="foot__brand"><a class="logo" href="index.html" aria-label="Space — на головну"><svg class="logo__mark" viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="8" fill="#CFFE25"/><circle cx="16" cy="16" r="6.2" fill="#010104"/><ellipse cx="16" cy="16" rx="12" ry="4.2" fill="none" stroke="#010104" stroke-width="2.2" transform="rotate(-24 16 16)"/><circle cx="25" cy="8" r="1.6" fill="#010104"/></svg><span>Space<i>.</i></span></a><p>Фінанси й процеси малого бізнесу з AI-помічником.</p><div class="foot__social"><a href="#" data-soon aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M6.5 9v9M6.5 6v.01M10.5 18v-5a3 3 0 0 1 6 0v5M10.5 9v9"/></svg></a><a href="#" data-soon aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="5"/><circle cx="12" cy="12" r="3.5"/></svg></a><a href="#" data-soon aria-label="YouTube"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="4"/><path d="m10 9.5 5 2.5-5 2.5Z"/></svg></a></div><p class="foot__status"><i></i>Усі системи працюють</p></div>
     <nav class="foot__col" aria-label="Швидкі посилання"><p>Швидкі посилання</p><a href="index.html">Головна</a><a href="about.html">Про нас</a><a href="features.html">Можливості</a><a href="pricing.html">Тарифи</a><a href="contact.html">Контакти</a></nav>
     <nav class="foot__col" aria-label="Інші сторінки"><p>Сторінки</p><a href="#" data-soon>Блог</a><a href="#" data-soon>Кар'єра</a><a href="#" data-soon>Інтеграції</a><a href="#" data-soon>Статус сервісу</a></nav>
     <div class="foot__col"><p>Наш офіс</p><span>вул. Зоряна, 12, Київ, 01001, Україна</span><p class="foot__h2">Телефон</p><a href="tel:+380000000000">+380 00 000 00 00</a></div>
