@@ -617,3 +617,8 @@ button { cursor: pointer; }
   .sec-band__list, .team-grid { grid-template-columns: 1fr; }
   .sec-band { padding-top: 70px; padding-bottom: 70px; }
 }
+
+/* demo notice — this is a portfolio concept, nothing is really ordered */
+.demo-note { position: relative; margin: 4px 0 12px; padding: 12px 14px 12px 40px; border-radius: 12px; background: #FFF4D6; color: #4A3A00; font-size: 13px; line-height: 1.45; text-align: left; box-shadow: inset 3px 0 0 #E0A100; }
+.demo-note::before { content: "!"; position: absolute; left: 12px; top: 12px; width: 18px; height: 18px; border-radius: 50%; background: #E0A100; color: #fff; font-size: 12px; font-weight: 700; line-height: 18px; text-align: center; }
+.demo-note b { font-weight: 700; }

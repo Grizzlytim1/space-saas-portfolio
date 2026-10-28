@@ -203,8 +203,8 @@
     if (!ok) return;
     const f = (n) => mform.elements.namedItem(n).value.trim();
     $("[data-done-text]", modal).textContent = plan
-      ? `${f("name")}, персональну пропозицію за тарифом «${plan}» надішлемо на ${f("email")} протягом робочого дня. (Це демо для портфоліо — листи не надсилаються.)`
-      : `${f("name")}, доступ на 14 днів надіслали на ${f("email")}. Менеджер зв'яжеться, щоб допомогти з налаштуванням. (Це демо для портфоліо — листи не надсилаються.)`;
+      ? `Демо: ${f("name")}, так виглядала б заявка на тариф «${plan}». Насправді нічого не оформлено, гроші не списано, лист на ${f("email")} не надіслано.`
+      : `Демо: ${f("name")}, так виглядала б реєстрація. Насправді акаунт не створено й лист на ${f("email")} не надіслано.`;
     mform.reset(); mform.hidden = true; mdone.hidden = false; $("button", mdone).focus();
   });
 
@@ -223,7 +223,7 @@
       ]);
       if (!ok) return;
       const f = (n) => pform.elements.namedItem(n).value.trim();
-      $("[data-done-text]", wrap).textContent = `${f("name")}, дякуємо! Відповімо на ${f("email")} протягом години в робочий час. (Це демо для портфоліо — повідомлення нікуди не надсилається.)`;
+      $("[data-done-text]", wrap).textContent = `Демо: ${f("name")}, повідомлення нікуди не надіслано — це концепт для портфоліо, відповіді не буде.`;
       pform.reset(); pform.hidden = true; pdone.hidden = false; $("[data-reset]", wrap).focus();
     });
     $("[data-reset]", wrap).addEventListener("click", () => { pdone.hidden = true; pform.hidden = false; pform.elements.namedItem("name").focus(); });

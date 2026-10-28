@@ -179,7 +179,7 @@ def run():
                         check(f"{w} contact: bad phone rejected", pg.get_attribute(f + " input[name=phone]", "aria-invalid") == "true")
                         pg.fill(f + " input[name=phone]", "+380 50 123 45 67")
                         pg.click(f + " button[type=submit]")
-                        check(f"{w} contact: message confirmed", pg.locator(".cform [data-done]").is_visible() and "marta@agency.ua" in pg.inner_text(".cform [data-done]"))
+                        check(f"{w} contact: message confirmed", pg.locator(".cform [data-done]").is_visible() and "Демо" in pg.inner_text(".cform [data-done]"))
                         pg.screenshot(path=str(SHOTS / f"contact-{w}.png"))
                     pg.close()
 

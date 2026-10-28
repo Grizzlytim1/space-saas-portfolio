@@ -281,6 +281,7 @@ CONTACT = f"""<section class="phero phero--contact" id="top">
       <label>Тема<select name="size"><option value="">Оберіть…</option><option>Демонстрація продукту</option><option>Питання про тарифи</option><option>Партнерство</option><option>Інше</option></select></label>
       <label>Повідомлення<textarea name="msg" rows="5" placeholder="Кілька слів про ваш бізнес і задачу"></textarea></label>
       <p class="form__err" data-err role="alert"></p>
+      <p class="demo-note" role="note"><b>Це демо-сайт.</b> Повідомлення нікуди не надсилається — це концепт для портфоліо.</p>
       <button class="btn btn--lime btn--wide" type="submit">→ Надіслати повідомлення</button>
     </form>
     <div class="done" data-done hidden><span class="done__ok">✓</span><h3 class="h3">Повідомлення надіслано!</h3><p data-done-text></p><button class="btn btn--white" type="button" data-reset>Написати ще</button></div>
